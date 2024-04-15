@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Activity</title>
+    <link rel="stylesheet" href="common_style.css">
+    <style>
+        .add-activity-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #333333;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-bar">
+                Home Page
+            </div>
+            <ul class="home-ul">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="add.html" class="active">Add</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="stats.html">Stats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="add-activity-container">
+        <h2>Add Activity</h2>
+        <form id="activityForm">
+            <input type="text" id="activity-name" name="activity-name" placeholder="Activity Name" required>
+            <select id="activity-type" name="activity-type" required>
+                <option value="" disabled selected>Select Activity Type</option>
+                <option value="running">Running</option>
+                <option value="biking">Biking</option>
+                <option value="lifting">Lifting</option>
+                <option value="swimming">Swimming</option>
+                <!-- need to add more here -->
+            </select>
+            <input type="number" id="time" name="time" placeholder="Time (minutes)" required>
+            <input type="number" id="miles" name="miles" placeholder="Miles" step="0.1" required>
+            <input type="number" id="pace" name="pace" placeholder="Pace (minutes per mile)" step="0.01">
+            <input type="number" id="calories" name="calories" placeholder="Calories burned" required>
+            <input type="number" id="difficulty" name="difficulty" placeholder="Difficulty rating (1-10)" min="1" max="10" required>
+            <input type="date" id="activity-date" name="activity-date" required> <!-- Date field -->
+            <input type="submit" value="Add Activity">
+        </form>
+
+        <script>
+            document.getElementById('activityForm').addEventListener('submit', function(event) {
+                event.preventDefault(); 
+
+                const activityName = document.getElementById('activity-name').value;
+                const activityType = document.getElementById('activity-type').value;
+                const time = document.getElementById('time').value;
+                const miles = document.getElementById('miles').value;
+                const pace = document.getElementById('pace').value;
+                const calories = document.getElementById('calories').value;
+                const difficulty = document.getElementById('difficulty').value;
+                const date = document.getElementById('activity-date').value; // Retrieve date value
+
+                const activity = {
+                    name: activityName,
+                    type: activityType,
+                    time: time,
+                    miles: miles,
+                    pace: pace,
+                    calories: calories,
+                    difficulty: difficulty,
+                    date: date 
+                };
+
+                const activities = JSON.parse(localStorage.getItem('activities')) || [];
+
+                activities.push(activity);
+
+                localStorage.setItem('activities', JSON.stringify(activities));
+
+                document.getElementById('activityForm').reset();
+
+                alert('Activity added successfully!');
+            });
+        </script>
+    </div>
+</body>
+</html>

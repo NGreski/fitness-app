@@ -1,6 +1,6 @@
 nav{
     display: flex;
-    background-color: #333;
+    /*background-color: #333;*/
     color: white;
     animation: move 5s infinite;
     justify-content: space-between;
@@ -184,20 +184,20 @@ body{
     }
 }
 
-@keyframes move {
+/* @keyframes move {
     0% { background-color:#333;}
     50% { background-color: rgb(145, 145, 145);}
     100% { background-color: #333;}
-}
+} */
 
-@keyframes move2 {
+/* @keyframes move2 {
     0% {color:#00f7ff;}
     50% { color: rgb(255, 8, 181);}
     100% { color: #00f7ff;}
-}
+} */
 
 
-img:hover{
+/* img:hover{
     transform: scale(1.1);
 }
 
@@ -207,4 +207,4 @@ img:hover{
 
 h1:hover{
     transform: rotate(360deg);
-}
+} */

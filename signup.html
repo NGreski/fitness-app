@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="common_style.css" />
 </head>
 <body>
@@ -14,8 +14,8 @@
             </div>
             <ul class ="home-ul">
                 <li><a href = "home.html">Home</a></li>
-                <li><a href = "login.html" class = "active">Login</a></li>
-                <li><a href = "signup.html">Sign Up</a></li>
+                <li><a href = "login.html">Login</a></li>
+                <li><a href = "signup.html" class = "active">Sign Up</a></li>
                 <li><a href = "add.html">Add</a></li>
                 <li><a href = "activity.html">Activity</a></li>
                 <li><a href = "calendar.html">Calendar</a></li>   
@@ -25,12 +25,16 @@
             </ul>
         </nav>
     </header>
-    <div class="login-container">
-        <h2>Login</h2>
+    <div class="signup-container">
+        <h2>Create an Account</h2>
         <form action="#" method="post">
-            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Login">
+            <input type="number" id="age" name="age" placeholder="Age" required>
+            <input type="url" id="profile-pic" name="profile-pic" placeholder="Profile Picture URL">
+            <textarea id="bio" name="bio" placeholder="Bio (optional)" rows="4"></textarea>
+            <input type="submit" value="Create Account">
         </form>
     </div>
 </body>

@@ -1,53 +1,69 @@
-nav{
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; 
+    color: #333; 
+}
+
+header {
+    background-color: #333; 
+    padding: 10px 0;
+}
+
+nav {
     display: flex;
-    color: white;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
-    border: black solid 2px;
+    padding: 0 20px;
+    border-bottom: 2px solid black; 
+}
+
+.nav-bar {
+    font-size: 24px;
+    color: white;
+}
+
+.home-ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.home-ul li {
+    margin-right: 15px;
+}
+
+.home-ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.home-ul li a:hover {
+    background-color: #555; /* Darker background on hover */
 }
 
 .home-ul li a.active {
     color: red;
 }
 
-.home-ul{
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-
-li a{
-    text-decoration: none;
-    color:white;
-    margin: 10px;
-}
-
-
-.nav-bar{
-    font-size: 24px;
-}
-
-img{
-    border-radius: 10px;
-    border: 10px black;
-}
-
-body{
-    background-color: rgb(145, 145, 145);
-}
-
-
-@media(max-width: 600px){
-    nav{flex-direction: column;
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
         align-items: flex-start;
-        }
+    }
 
-    ul{
+    .home-ul {
         flex-direction: column;
     }
 
-    li{
+    .home-ul li {
         margin: 5px 0;
     }
 }

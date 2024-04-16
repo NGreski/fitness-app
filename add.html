@@ -68,28 +68,28 @@
     <div class="add-activity-container">
         <h2>Add Activity</h2>
         <form id="activityForm">
-            <input type="text" id="activity-name" name="activity-name" placeholder="Activity Name" required>
-            <select id="activity-type" name="activity-type" required>
+            <input type="text" id="activity-name" name="activityName" placeholder="Activity Name" required>
+            <select id="activity-type" name="activityType" required>
                 <option value="" disabled selected>Select Activity Type</option>
                 <option value="running">Running</option>
                 <option value="biking">Biking</option>
                 <option value="lifting">Lifting</option>
                 <option value="swimming">Swimming</option>
-                <!-- need to add more here -->
+                <!-- Add more activity types here -->
             </select>
             <input type="number" id="time" name="time" placeholder="Time (minutes)" required>
             <input type="number" id="miles" name="miles" placeholder="Miles" step="0.1" required>
             <input type="number" id="pace" name="pace" placeholder="Pace (minutes per mile)" step="0.01">
             <input type="number" id="calories" name="calories" placeholder="Calories burned" required>
             <input type="number" id="difficulty" name="difficulty" placeholder="Difficulty rating (1-10)" min="1" max="10" required>
-            <input type="date" id="activity-date" name="activity-date" required> <!-- Date field -->
+            <input type="date" id="activity-date" name="activityDate" required>
             <input type="submit" value="Add Activity">
         </form>
 
         <script>
             document.getElementById('activityForm').addEventListener('submit', function(event) {
-                event.preventDefault(); 
-
+                event.preventDefault();
+        
                 const activityName = document.getElementById('activity-name').value;
                 const activityType = document.getElementById('activity-type').value;
                 const time = document.getElementById('time').value;
@@ -97,8 +97,8 @@
                 const pace = document.getElementById('pace').value;
                 const calories = document.getElementById('calories').value;
                 const difficulty = document.getElementById('difficulty').value;
-                const date = document.getElementById('activity-date').value; // Retrieve date value
-
+                const date = document.getElementById('activity-date').value;
+        
                 const activity = {
                     name: activityName,
                     type: activityType,
@@ -109,18 +109,43 @@
                     difficulty: difficulty,
                     date: date 
                 };
-
+        
                 const activities = JSON.parse(localStorage.getItem('activities')) || [];
-
+        
                 activities.push(activity);
-
+        
                 localStorage.setItem('activities', JSON.stringify(activities));
-
+        
                 document.getElementById('activityForm').reset();
-
+        
+                updateCalendarWithActivities();
+        
                 alert('Activity added successfully!');
             });
+        
+            function updateCalendarWithActivities() {
+                const activities = JSON.parse(localStorage.getItem('activities')) || [];
+                const calendarNumbers = document.querySelectorAll('.calendar-number');
+        
+                activities.forEach(activity => {
+                    const activityDate = new Date(activity.date);
+                    const dayOfMonth = activityDate.getUTCDate(); 
+                    calendarNumbers.forEach(calendarNumber => {
+                        const calendarDay = parseInt(calendarNumber.textContent);
+        
+                        if (calendarDay === dayOfMonth) {
+                            const cell = calendarNumber.parentElement;
+                            const link = document.createElement('a');
+                            link.href = `activity.html#${activity.name}`;
+                            link.textContent = activity.name;
+                            link.style.display = 'block';
+                            cell.appendChild(link);
+                        }
+                    });
+                });
+            }
         </script>
+        
     </div>
 </body>
 </html>

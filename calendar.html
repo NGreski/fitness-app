@@ -6,16 +6,6 @@
     <title>April Calendar</title>
     <link rel="stylesheet" href="common_style.css">
     <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        } */
         .calendar-container {
             background-color: #ffffff;
             padding: 40px;
@@ -35,16 +25,21 @@
         table, th, td {
             border: 1px solid #ddd;
         }
-        th, td {
-            padding: 12px;
-            text-align: center;
-        }
         th {
             background-color: #4CAF50;
             color: white;
         }
         td {
             background-color: #ffffff;
+            height: 100px;
+            position: relative;
+        }
+        .calendar-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 12px;
+            color: #aaa;
         }
     </style>
 </head>
@@ -82,54 +77,63 @@
                     <th>Sat</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>17</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                    <td>24</td>
-                </tr>
-                <tr>
-                    <td>25</td>
-                    <td>26</td>
-                    <td>27</td>
-                    <td>28</td>
-                    <td>29</td>
-                    <td>30</td>
-                    <td></td>
-                </tr>
+            <tbody id="calendarBody">
+                <!-- days added here -->
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarBody = document.getElementById('calendarBody');
+            const totalDays = 30; 
+            const activities = JSON.parse(localStorage.getItem('activities')) || [];
+    
+            let day = 1;
+            for (let week = 0; week < 6; week++) {
+                const calendarRow = calendarBody.insertRow();
+    
+                for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+                    const cell = calendarRow.insertCell();
+    
+                    if (week === 0 && dayOfWeek < new Date(2024, 3, 1).getDay()) {
+                        cell.textContent = ''; 
+                    } else if (day <= totalDays) {
+                        const dayNumber = document.createElement('span');
+                        dayNumber.classList.add('calendar-number');
+                        dayNumber.textContent = day;
+                        cell.appendChild(dayNumber);
+    
+                        day++;
+                    }
+                }
+            }
+    
+            updateCalendarWithActivities(activities);
+        });
+    
+        function updateCalendarWithActivities(activities) {
+            const calendarNumbers = document.querySelectorAll('.calendar-number');
+    
+            activities.forEach(activity => {
+                const activityDate = new Date(activity.date);
+                const activityDay = activityDate.getUTCDate(); 
+                calendarNumbers.forEach(calendarNumber => {
+                    const calendarDay = parseInt(calendarNumber.textContent);
+    
+                    if (calendarDay === activityDay) {
+                        const cell = calendarNumber.parentElement;
+                        const link = document.createElement('a');
+                        link.href = `activity.html#${activity.name}`;
+                        link.textContent = activity.name;
+                        link.style.display = 'block';
+                        cell.appendChild(link);
+                    }
+                });
+            });
+        }
+    </script>
+    
+    
 </body>
 </html>

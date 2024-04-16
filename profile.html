@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="common_style.css">
+    <style>
+        /* Additional CSS styles for profile page */
+        .profile-container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .delete-profile-btn {
+            background-color: #f44336;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .delete-profile-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-bar">
+                Home Page
+            </div>
+            <ul class="home-ul">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="add.html">Add</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="stats.html">Stats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <label for="name">Name:</label>
+            <p id="name"></p>
+        </div>
+        <div class="profile-info">
+            <label for="email">Email:</label>
+            <p id="email"></p>
+        </div>
+        <div class="profile-info">
+            <label for="age">Age:</label>
+            <p id="age"></p>
+        </div>
+        <div class="profile-info">
+            <label for="profile-pic">Profile Picture:</label>
+            <img id="profile-pic" src="" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <label for="bio">Bio:</label>
+            <p id="bio"></p>
+        </div>
+
+        <button class="delete-profile-btn" onclick="deleteUserProfile()">Delete Profile</button>
+    </div>
+
+    <script>
+        function deleteUserProfile() {
+            localStorage.removeItem('userData');
+
+            alert('Your profile has been deleted.');
+            window.location.href = 'home.html'; 
+        }
+
+        const userData = JSON.parse(localStorage.getItem('userData'));
+
+        if (userData) {
+            document.getElementById('name').textContent = userData.name || 'N/A';
+            document.getElementById('email').textContent = userData.email || 'N/A';
+            document.getElementById('age').textContent = userData.age || 'N/A';
+            document.getElementById('profile-pic').src = userData.profilePic || 'placeholder.jpg';
+            document.getElementById('bio').textContent = userData.bio || 'No bio available.';
+        }
+    </script>
+</body>
+</html>

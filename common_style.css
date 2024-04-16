@@ -1,8 +1,6 @@
 nav{
     display: flex;
-    /*background-color: #333;*/
     color: white;
-    animation: move 5s infinite;
     justify-content: space-between;
     align-items: center;
     padding: 5px 20px;
@@ -30,136 +28,6 @@ li a{
     font-size: 24px;
 }
 
-.profile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.prof-pic img{ 
-    width: 225px;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-
-.prof-name {
-    font-size: 24px; 
-    text-align: center;
-}
-
-.student-athlete {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 50px;
-}
-
-.athlete img {
-    width: 207px;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.student img {
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.student, .athlete{
-    text-align: center;
-    font-size: 18px;
-}
-
-#center{
-    text-align: center;
-}
-
-#left{
-    text-align: left;
-    font-size: 20px;
-}
-
-.about-me h2 {
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    margin-top: 20px;
-    transition: transform 5.0s ease-in-out;
-}
-
-.blog {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 15px;
-    margin-left: 50px;
-}
-
-.left-sidebar,
-.right-sidebar{
-    margin: 10px;
-    border: black solid 1px;
-    padding: 5px;
-}
-
-.blog-main {
-    text-align: center;
-    margin: 10px;
-    border: black solid 1px;
-    padding: 5px;
-}
-
-.blog-head,
-.blog-foot {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    border: black solid 1px;
-}
-
-.friends-images img{
-    display: flex;
-}
-
-.blog-main img{
-    width: 250px;
-    display: flex;
-    margin: auto;
-    transition: transform 0.3s ease;
-
-}
-
-#blue{
-    color: blue;
-}
-
-#green{
-    color: green;
-}
-
-.gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-}
-
-.gallery-images img {
-    border-radius: 20px;
-    padding-top: 10px;
-    width: calc(33% - 5px); 
-    margin-bottom: 10px;  
-    transition: transform 0.3s ease;
-}
-
-h1{
-    transition: transform 2.0s ease;
-}
-
 img{
     border-radius: 10px;
     border: 10px black;
@@ -183,28 +51,3 @@ body{
         margin: 5px 0;
     }
 }
-
-/* @keyframes move {
-    0% { background-color:#333;}
-    50% { background-color: rgb(145, 145, 145);}
-    100% { background-color: #333;}
-} */
-
-/* @keyframes move2 {
-    0% {color:#00f7ff;}
-    50% { color: rgb(255, 8, 181);}
-    100% { color: #00f7ff;}
-} */
-
-
-/* img:hover{
-    transform: scale(1.1);
-}
-
-.about-me h2:hover{
-    transform: translateX(450px)
-}
-
-h1:hover{
-    transform: rotate(360deg);
-} */

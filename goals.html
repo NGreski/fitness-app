@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals</title>
+    <link rel="stylesheet" href="common_style.css">
+    <style>
+        .goals-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h2 {
+            color: #333333;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        textarea {
+            height: 150px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .goal-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-bar">
+                Home Page
+            </div>
+            <ul class="home-ul">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="add.html">Add</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="goals.html" class="active">Goals</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="stats.html">Stats</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="goals-container">
+        <h2>Set Your Fitness Goals</h2>
+        <form id="goalsForm">
+            <input type="text" id="goalType" name="goalType" placeholder="Type of Goal (e.g., Running, Weightlifting)" required>
+            <textarea id="goalDescription" name="goalDescription" placeholder="Describe your goal"></textarea>
+            <input type="submit" value="Add Goal">
+        </form>
+
+        <div id="goalsList"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayGoals();
+        });
+
+        document.getElementById('goalsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const goalType = document.getElementById('goalType').value;
+            const goalDescription = document.getElementById('goalDescription').value;
+
+            const goal = {
+                type: goalType,
+                description: goalDescription
+            };
+
+            const goals = JSON.parse(localStorage.getItem('goals')) || [];
+            goals.push(goal);
+            localStorage.setItem('goals', JSON.stringify(goals));
+
+            document.getElementById('goalsForm').reset();
+
+            displayGoals();
+        });
+
+        function displayGoals() {
+            const goalsList = document.getElementById('goalsList');
+            goalsList.innerHTML = ''; 
+
+            const goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+            goals.forEach((goal, index) => {
+                const goalItem = document.createElement('div');
+                goalItem.classList.add('goal-item');
+
+                const goalType = document.createElement('strong');
+                goalType.textContent = `Type: ${goal.type}`;
+                goalItem.appendChild(goalType);
+
+                const lineBreak = document.createElement('br');
+                goalItem.appendChild(lineBreak);
+
+                const goalDescription = document.createElement('span');
+                goalDescription.textContent = `Description: ${goal.description}`;
+                goalItem.appendChild(goalDescription);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-btn');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    deleteGoal(index);
+                };
+                goalItem.appendChild(deleteButton);
+
+                goalsList.appendChild(goalItem);
+            });
+        }
+
+        function deleteGoal(index) {
+            const goals = JSON.parse(localStorage.getItem('goals')) || [];
+            goals.splice(index, 1);
+            localStorage.setItem('goals', JSON.stringify(goals));
+            displayGoals();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Headlines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Latest News Headlines</h1>
+    <ul id="newsList">
+        <!-- News items will be added here dynamically -->
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('https://www.strava.com/activities/11190642527');
+                const data = await response.json();
+
+                if (data.articles && data.articles.length > 0) {
+                    const newsList = document.getElementById('newsList');
+
+                    data.articles.forEach(article => {
+                        const li = document.createElement('li');
+                        const title = document.createElement('h3');
+                        title.textContent = article.title;
+                        const description = document.createElement('p');
+                        description.textContent = article.description;
+
+                        li.appendChild(title);
+                        li.appendChild(description);
+                        newsList.appendChild(li);
+                    });
+                } else {
+                    throw new Error('No news articles found.');
+                }
+            } catch (error) {
+                console.error('Error fetching news data:', error);
+            }
+        });
+    </script>
+</body>
+</html>

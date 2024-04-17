@@ -1,4 +1,4 @@
-
+/* Home Page/Nav Bar */
 body, html {
     margin: 0;
     padding: 0;
@@ -46,13 +46,244 @@ nav {
 }
 
 .home-ul li a:hover {
-    background-color: #555; /* Darker background on hover */
+    background-color: #555; 
 }
 
 .home-ul li a.active {
     color: red;
 }
 
+/* Activity */
+.activity-list-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin-top: 20px;
+}
+.activity-item {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+    text-align: left;
+    position: relative;
+}
+.activity-item:last-child {
+    border-bottom: none;
+}
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Add */
+.add-activity-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+h2 {
+    color: #333333;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Calendar */
+.calendar-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+}
+h2 {
+    color: #333333;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+td {
+    background-color: #ffffff;
+    height: 100px;
+    position: relative;
+}
+.calendar-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Goals */
+.goals-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+h2 {
+    color: #333333;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+textarea {
+    height: 150px;
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.goal-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 10px;
+    text-align: left;
+}
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Login */
+
+
+/* Profile */
+.profile-container {
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+h2 {
+    text-align: center;
+    color: #333333;
+}
+.profile-info {
+    margin-bottom: 20px;
+}
+label {
+    font-weight: bold;
+}
+img {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+p {
+    margin-bottom: 10px;
+}
+.delete-profile-btn {
+    background-color: #f44336;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+.delete-profile-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* SignUp */
+
+/* Stats */
+.stats-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+h2 {
+    color: #333333;
+}
+.stat-item {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+
+
+/* Media */
 @media (max-width: 600px) {
     nav {
         flex-direction: column;

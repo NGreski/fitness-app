@@ -40,9 +40,9 @@
 
     <script>
         document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); 
 
-            // Get form values
+          
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -50,7 +50,7 @@
             const profilePic = document.getElementById('profile-pic').value;
             const bio = document.getElementById('bio').value;
 
-            // Create user object
+          
             const userData = {
                 name: name,
                 email: email,
@@ -59,15 +59,12 @@
                 bio: bio
             };
 
-            // Save user data to localStorage
             localStorage.setItem('userData', JSON.stringify(userData));
 
-            // Clear form fields after submission (optional)
             document.getElementById('signupForm').reset();
 
-            // Redirect to profile page or display success message
             alert('Account created successfully!');
-            window.location.href = 'profile.html'; // Redirect to profile page
+            window.location.href = 'profile.html'; 
         });
     </script>
 </body>

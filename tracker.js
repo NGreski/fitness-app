@@ -1,6 +1,7 @@
 let distanceTraveled = 0; // in meters
 let startTime = null;
 let lastPosition = null;
+let timerInterval = null; // Interval ID for updating the timer
 
 const distanceElement = document.getElementById('distance');
 const timeElement = document.getElementById('time');
@@ -17,16 +18,18 @@ startButton.addEventListener('click', () => {
 function startTracking() {
     startButton.textContent = 'Stop';
     startTime = new Date();
+    timerInterval = setInterval(updateTimer, 1000); // Start updating timer every second
     navigator.geolocation.watchPosition(handlePositionUpdate, handlePositionError);
 }
 
 function stopTracking() {
     startButton.textContent = 'Go';
+    clearInterval(timerInterval); // Stop updating the timer
     distanceTraveled = 0;
     startTime = null;
     distanceElement.textContent = 'Distance: 0 meters';
     timeElement.textContent = 'Time: 0 seconds';
-    lastPosition = null; // Reset lastPosition when stopping tracking
+    lastPosition = null;
     navigator.geolocation.clearWatch();
 }
 
@@ -34,19 +37,51 @@ function handlePositionUpdate(position) {
     if (!startTime) return; // Tracking not started
 
     const { latitude, longitude } = position.coords;
-    const currentPosition = new google.maps.LatLng(latitude, longitude);
+    const currentPosition = { latitude, longitude };
 
     if (lastPosition) {
-        const distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(lastPosition, currentPosition);
+        const distanceInMeters = calculateDistance(lastPosition, currentPosition);
         distanceTraveled += distanceInMeters;
     }
 
-    const currentTime = new Date();
-    const elapsedTimeSeconds = Math.round((currentTime - startTime) / 1000);
-    distanceElement.textContent = `Distance: ${distanceTraveled.toFixed(2)} meters`;
-    timeElement.textContent = `Time: ${elapsedTimeSeconds} seconds`;
-
+    updateDistanceUI();
     lastPosition = currentPosition;
+}
+
+function updateTimer() {
+    if (startTime) {
+        const currentTime = new Date();
+        const elapsedTimeSeconds = Math.round((currentTime - startTime) / 1000);
+        timeElement.textContent = `Time: ${elapsedTimeSeconds} seconds`;
+    }
+}
+
+function updateDistanceUI() {
+    distanceElement.textContent = `Distance: ${distanceTraveled.toFixed(2)} meters`;
+}
+
+function calculateDistance(pos1, pos2) {
+    const earthRadius = 6371000; // in meters
+    const lat1 = pos1.latitude;
+    const lon1 = pos1.longitude;
+    const lat2 = pos2.latitude;
+    const lon2 = pos2.longitude;
+
+    const dLat = toRadians(lat2 - lat1);
+    const dLon = toRadians(lon2 - lon1);
+
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = earthRadius * c;
+    return distance;
+}
+
+function toRadians(degrees) {
+    return degrees * (Math.PI / 180);
 }
 
 function handlePositionError(error) {

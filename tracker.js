@@ -26,11 +26,12 @@ function stopTracking() {
     startTime = null;
     distanceElement.textContent = 'Distance: 0 meters';
     timeElement.textContent = 'Time: 0 seconds';
+    lastPosition = null; // Reset lastPosition when stopping tracking
     navigator.geolocation.clearWatch();
 }
 
 function handlePositionUpdate(position) {
-    if (!startTime) return;
+    if (!startTime) return; // Tracking not started
 
     const { latitude, longitude } = position.coords;
     const currentPosition = new google.maps.LatLng(latitude, longitude);

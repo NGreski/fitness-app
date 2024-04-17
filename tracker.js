@@ -1,4 +1,4 @@
-let distanceTraveled = 0; // in meters
+let distanceTraveled = 0; // in miles
 let startTime = null;
 let lastPosition = null;
 let timerInterval = null; // Interval ID for updating the timer
@@ -27,7 +27,7 @@ function stopTracking() {
     clearInterval(timerInterval); // Stop updating the timer
     distanceTraveled = 0;
     startTime = null;
-    distanceElement.textContent = 'Distance: 0 meters';
+    distanceElement.textContent = 'Distance: 0 miles';
     timeElement.textContent = 'Time: 0 seconds';
     lastPosition = null;
     navigator.geolocation.clearWatch();
@@ -40,8 +40,8 @@ function handlePositionUpdate(position) {
     const currentPosition = { latitude, longitude };
 
     if (lastPosition) {
-        const distanceInMeters = calculateDistance(lastPosition, currentPosition);
-        distanceTraveled += distanceInMeters;
+        const distanceInMiles = calculateDistance(lastPosition, currentPosition);
+        distanceTraveled += distanceInMiles;
     }
 
     updateDistanceUI();
@@ -57,11 +57,11 @@ function updateTimer() {
 }
 
 function updateDistanceUI() {
-    distanceElement.textContent = `Distance: ${distanceTraveled.toFixed(2)} meters`;
+    distanceElement.textContent = `Distance: ${distanceTraveled.toFixed(2)} miles`;
 }
 
 function calculateDistance(pos1, pos2) {
-    const earthRadius = 6371000; // in meters
+    const earthRadiusMiles = 3958.8; // in miles (approximate radius of Earth)
     const lat1 = pos1.latitude;
     const lon1 = pos1.longitude;
     const lat2 = pos2.latitude;
@@ -76,7 +76,7 @@ function calculateDistance(pos1, pos2) {
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    const distance = earthRadius * c;
+    const distance = earthRadiusMiles * c;
     return distance;
 }
 

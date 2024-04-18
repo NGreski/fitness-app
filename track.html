@@ -4,49 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distance Tracker</title>
+    <link rel="stylesheet" href="common_style.css"> <!-- Link to your external CSS file -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        #distance {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        #time {
-            font-size: 18px;
-        }
-        #startButton {
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        #log {
-            text-align: left;
-            margin: 0 auto;
-            max-width: 400px;
-        }
-        #logHeader {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        #logList {
-            list-style: none;
-            padding: 0;
-        }
-        .logEntry {
-            margin-bottom: 5px;
-        }
+        
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-bar">GitFitness 🏃</div>
+            <ul class="home-ul">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">SignUp</a></li>
+                <li><a href="track.html" class="active">Start</a></li>
+                <li><a href="add.html">Add</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="stats.html">Stats</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <h1>Distance Tracker</h1>
     <div id="distance">Distance: 0.00 miles</div>
     <div id="time">Time: 0 seconds</div>

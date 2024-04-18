@@ -151,27 +151,27 @@ function stopTracking() {
     localStorage.setItem('activities', JSON.stringify(activities));
 }
 
-function logSession() {
-    if (startTime) {
-        const currentTime = new Date();
-        const elapsedTimeSeconds = Math.round((currentTime - startTime) / 1000);
+// function logSession() {
+//     if (startTime) {
+//         const currentTime = new Date();
+//         const elapsedTimeSeconds = Math.round((currentTime - startTime) / 1000);
 
-        // Create a new session log entry
-        const sessionEntry = {
-            name: 'Activity', // You can customize the activity name here
-            type: 'walking', // Example: 'Outdoor', 'Running', 'Cycling', etc.
-            time: elapsedTimeSeconds / 60, // Convert seconds to minutes
-            miles: distanceTraveled.toFixed(2),
-            date: startTime.toLocaleDateString()
-        };
+//         // Create a new session log entry
+//         const sessionEntry = {
+//             name: 'Activity', // You can customize the activity name here
+//             type: 'walking', // Example: 'Outdoor', 'Running', 'Cycling', etc.
+//             time: elapsedTimeSeconds / 60, // Convert seconds to minutes
+//             miles: distanceTraveled.toFixed(2),
+//             date: startTime.toLocaleDateString()
+//         };
 
-        // Add session entry to the activities array
-        activities.push(sessionEntry);
-    }
-}
+//         // Add session entry to the activities array
+//         activities.push(sessionEntry);
+//     }
+// }
 
-// After defining logSession and stopTracking functions, call stopTracking at the end
+// // After defining logSession and stopTracking functions, call stopTracking at the end
 
-// Optional: You can also update the activity list immediately after adding a new session
-renderActivityList();
+// // Optional: You can also update the activity list immediately after adding a new session
+// renderActivityList();
 

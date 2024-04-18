@@ -25,14 +25,37 @@
             color: white;
             border: none;
             border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #log {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        #logHeader {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #logList {
+            list-style: none;
+            padding: 0;
+        }
+        .logEntry {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <h1>Distance Tracker</h1>
-    <div id="distance">Distance: 0 miles</div>
+    <div id="distance">Distance: 0.00 miles</div>
     <div id="time">Time: 0 seconds</div>
     <button id="startButton">Go</button>
+
+    <div id="log">
+        <div id="logHeader">Session History:</div>
+        <ul id="logList"></ul>
+    </div>
 
     <script src="tracker.js"></script>
 </body>

@@ -1,0 +1,31 @@
+.activity-list-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin: 20px auto; /* Center the container horizontally */
+}
+
+.activity-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  text-align: left;
+  position: relative;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

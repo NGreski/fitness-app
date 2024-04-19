@@ -1,97 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stats</title>
-    <link rel="stylesheet" href="common_style.css">
-    <style>
-        
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="common_style.css" />
+    <link rel="stylesheet" href="stats.css" />
+    <style></style>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="nav-bar">
-                GitFitness 🏃
-            </div>
-            <ul class="home-ul">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-                <li><a href="track.html">Start</a></li>
-                <li><a href="add.html" >Add</a></li>
-                <li><a href="activity.html">Activity</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="goals.html">Goals</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="stats.html"class="active">Stats</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="nav-bar">GitFitness 🏃</div>
+        <ul class="home-ul">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">SignUp</a></li>
+          <li><a href="track.html">Start</a></li>
+          <li><a href="add.html">Add</a></li>
+          <li><a href="activity.html">Activity</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="stats.html" class="active">Stats</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="stats-container">
-        <h2>Activity Statistics</h2>
-        <div class="stat-item" id="totalActivityTime"></div>
-        <div class="stat-item" id="totalCaloriesBurned"></div>
-        <div class="stat-item" id="averageRunPace"></div>
-        <div class="stat-item" id="totalMiles"></div>
-        <div class="stat-item" id="averageMilesPerRun"></div>
-        <div class="stat-item" id="numberOfActivities"></div>
-        <div class="stat-item" id="averageDifficulty"></div>
+      <h2>Activity Statistics</h2>
+      <div class="stat-item" id="totalActivityTime"></div>
+      <div class="stat-item" id="totalCaloriesBurned"></div>
+      <div class="stat-item" id="averageRunPace"></div>
+      <div class="stat-item" id="totalMiles"></div>
+      <div class="stat-item" id="averageMilesPerRun"></div>
+      <div class="stat-item" id="numberOfActivities"></div>
+      <div class="stat-item" id="averageDifficulty"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const activities = JSON.parse(localStorage.getItem('activities')) || [];
+      document.addEventListener("DOMContentLoaded", function () {
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
 
-            const totalActivityTimeElement = document.getElementById('totalActivityTime');
-            const totalCaloriesBurnedElement = document.getElementById('totalCaloriesBurned');
-            const averageRunPaceElement = document.getElementById('averageRunPace');
-            const totalMilesElement = document.getElementById('totalMiles');
-            const averageMilesPerRunElement = document.getElementById('averageMilesPerRun');
-            const numberOfActivitiesElement = document.getElementById('numberOfActivities');
-            const averageDifficultyElement = document.getElementById('averageDifficulty');
+        const totalActivityTimeElement =
+          document.getElementById("totalActivityTime");
+        const totalCaloriesBurnedElement = document.getElementById(
+          "totalCaloriesBurned"
+        );
+        const averageRunPaceElement = document.getElementById("averageRunPace");
+        const totalMilesElement = document.getElementById("totalMiles");
+        const averageMilesPerRunElement =
+          document.getElementById("averageMilesPerRun");
+        const numberOfActivitiesElement =
+          document.getElementById("numberOfActivities");
+        const averageDifficultyElement =
+          document.getElementById("averageDifficulty");
 
-            let totalActivityTime = 0;
-            let totalCaloriesBurned = 0;
-            let totalMiles = 0;
-            let totalDifficulty = 0;
-            let numberOfActivities = activities.length;
+        let totalActivityTime = 0;
+        let totalCaloriesBurned = 0;
+        let totalMiles = 0;
+        let totalDifficulty = 0;
+        let numberOfActivities = activities.length;
 
-            activities.forEach(activity => {
-                totalActivityTime += parseFloat(activity.time);
-                totalCaloriesBurned += parseInt(activity.calories);
-                totalMiles += parseFloat(activity.miles);
-                totalDifficulty += parseInt(activity.difficulty);
-            });
-
-            const averageRunPace = calculateAverageRunPace(activities);
-            const averageMilesPerRun = totalMiles / numberOfActivities;
-            const averageDifficulty = totalDifficulty / numberOfActivities;
-
-            totalActivityTimeElement.textContent = `Total Activity Time: ${totalActivityTime} minutes`;
-            totalCaloriesBurnedElement.textContent = `Total Calories Burned: ${totalCaloriesBurned} calories`;
-            averageRunPaceElement.textContent = `Average Run Pace: ${averageRunPace} minutes per mile`;
-            totalMilesElement.textContent = `Total Miles: ${totalMiles} miles`;
-            averageMilesPerRunElement.textContent = `Average Miles Per Run: ${averageMilesPerRun.toFixed(2)} miles`;
-            numberOfActivitiesElement.textContent = `Number of Activities: ${numberOfActivities}`;
-            averageDifficultyElement.textContent = `Average Difficulty Rating: ${averageDifficulty.toFixed(2)}`;
+        activities.forEach((activity) => {
+          totalActivityTime += parseFloat(activity.time);
+          totalCaloriesBurned += parseInt(activity.calories);
+          totalMiles += parseFloat(activity.miles);
+          totalDifficulty += parseInt(activity.difficulty);
         });
 
-        function calculateAverageRunPace(activities) {
-            const runActivities = activities.filter(activity => activity.type === 'running');
-            if (runActivities.length === 0) return 'N/A'; // No running activities
+        const averageRunPace = calculateAverageRunPace(activities);
+        const averageMilesPerRun = totalMiles / numberOfActivities;
+        const averageDifficulty = totalDifficulty / numberOfActivities;
 
-            let totalPace = 0;
-            runActivities.forEach(activity => {
-                if (activity.pace) {
-                    totalPace += parseFloat(activity.pace);
-                }
-            });
+        totalActivityTimeElement.textContent = `Total Activity Time: ${totalActivityTime} minutes`;
+        totalCaloriesBurnedElement.textContent = `Total Calories Burned: ${totalCaloriesBurned} calories`;
+        averageRunPaceElement.textContent = `Average Run Pace: ${averageRunPace} minutes per mile`;
+        totalMilesElement.textContent = `Total Miles: ${totalMiles} miles`;
+        averageMilesPerRunElement.textContent = `Average Miles Per Run: ${averageMilesPerRun.toFixed(
+          2
+        )} miles`;
+        numberOfActivitiesElement.textContent = `Number of Activities: ${numberOfActivities}`;
+        averageDifficultyElement.textContent = `Average Difficulty Rating: ${averageDifficulty.toFixed(
+          2
+        )}`;
+      });
 
-            return (totalPace / runActivities.length).toFixed(2);
-        }
+      function calculateAverageRunPace(activities) {
+        const runActivities = activities.filter(
+          (activity) => activity.type === "running"
+        );
+        if (runActivities.length === 0) return "N/A"; // No running activities
+
+        let totalPace = 0;
+        runActivities.forEach((activity) => {
+          if (activity.pace) {
+            totalPace += parseFloat(activity.pace);
+          }
+        });
+
+        return (totalPace / runActivities.length).toFixed(2);
+      }
     </script>
-</body>
+  </body>
 </html>

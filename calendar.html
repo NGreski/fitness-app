@@ -1,106 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>April Calendar</title>
-    <link rel="stylesheet" href="common_style.css">
-    <style>
-        
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="common_style.css" />
+    <link rel="stylesheet" href="calender.css" />
+    <style></style>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="nav-bar">
-                GitFitness 🏃
-            </div>
-            <ul class="home-ul">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-                <li><a href="track.html">Start</a></li>
-                <li><a href="add.html" >Add</a></li>
-                <li><a href="activity.html">Activity</a></li>
-                <li><a href="calendar.html"class="active">Calendar</a></li>
-                <li><a href="goals.html">Goals</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="stats.html">Stats</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="nav-bar">GitFitness 🏃</div>
+        <ul class="home-ul">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">SignUp</a></li>
+          <li><a href="track.html">Start</a></li>
+          <li><a href="add.html">Add</a></li>
+          <li><a href="activity.html">Activity</a></li>
+          <li><a href="calendar.html" class="active">Calendar</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="stats.html">Stats</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="calendar-container">
-        <h2>April 2024</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                </tr>
-            </thead>
-            <tbody id="calendarBody">
-                <!-- days added here -->
-            </tbody>
-        </table>
+      <h2>April 2024</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendarBody">
+          <!-- days added here -->
+        </tbody>
+      </table>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const calendarBody = document.getElementById('calendarBody');
-            const totalDays = 30; 
-            const activities = JSON.parse(localStorage.getItem('activities')) || [];
-    
-            let day = 1;
-            for (let week = 0; week < 6; week++) {
-                const calendarRow = calendarBody.insertRow();
-    
-                for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-                    const cell = calendarRow.insertCell();
-    
-                    if (week === 0 && dayOfWeek < new Date(2024, 3, 1).getDay()) {
-                        cell.textContent = ''; 
-                    } else if (day <= totalDays) {
-                        const dayNumber = document.createElement('span');
-                        dayNumber.classList.add('calendar-number');
-                        dayNumber.textContent = day;
-                        cell.appendChild(dayNumber);
-    
-                        day++;
-                    }
-                }
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarBody = document.getElementById("calendarBody");
+        const totalDays = 30;
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+        let day = 1;
+        for (let week = 0; week < 6; week++) {
+          const calendarRow = calendarBody.insertRow();
+
+          for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+            const cell = calendarRow.insertCell();
+
+            if (week === 0 && dayOfWeek < new Date(2024, 3, 1).getDay()) {
+              cell.textContent = "";
+            } else if (day <= totalDays) {
+              const dayNumber = document.createElement("span");
+              dayNumber.classList.add("calendar-number");
+              dayNumber.textContent = day;
+              cell.appendChild(dayNumber);
+
+              day++;
             }
-    
-            updateCalendarWithActivities(activities);
-        });
-    
-        function updateCalendarWithActivities(activities) {
-            const calendarNumbers = document.querySelectorAll('.calendar-number');
-    
-            activities.forEach(activity => {
-                const activityDate = new Date(activity.date);
-                const activityDay = activityDate.getUTCDate(); 
-                calendarNumbers.forEach(calendarNumber => {
-                    const calendarDay = parseInt(calendarNumber.textContent);
-    
-                    if (calendarDay === activityDay) {
-                        const cell = calendarNumber.parentElement;
-                        const link = document.createElement('a');
-                        link.href = `activity.html#${activity.name}`;
-                        link.textContent = activity.name;
-                        link.style.display = 'block';
-                        cell.appendChild(link);
-                    }
-                });
-            });
+          }
         }
+
+        updateCalendarWithActivities(activities);
+      });
+
+      function updateCalendarWithActivities(activities) {
+        const calendarNumbers = document.querySelectorAll(".calendar-number");
+
+        activities.forEach((activity) => {
+          const activityDate = new Date(activity.date);
+          const activityDay = activityDate.getUTCDate();
+          calendarNumbers.forEach((calendarNumber) => {
+            const calendarDay = parseInt(calendarNumber.textContent);
+
+            if (calendarDay === activityDay) {
+              const cell = calendarNumber.parentElement;
+              const link = document.createElement("a");
+              link.href = `activity.html#${activity.name}`;
+              link.textContent = activity.name;
+              link.style.display = "block";
+              cell.appendChild(link);
+            }
+          });
+        });
+      }
     </script>
-    
-    
-</body>
+  </body>
 </html>

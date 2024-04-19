@@ -1,482 +1,71 @@
 /* Home Page/Nav Bar */
-body, html {
-    margin: 0;
-    padding: 0;
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; 
-    color: #333; 
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 header {
-    background-color: #333; 
-    padding: 10px 0;
+  background-color: #333;
+  padding: 10px 0;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    border-bottom: 2px solid black; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 2px solid black;
 }
 
 .nav-bar {
-    font-size: 24px;
-    color: white;
+  font-size: 24px;
+  color: white;
 }
 
 .home-ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
 }
 
 .home-ul li {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .home-ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .home-ul li a:hover {
-    background-color: #555; 
+  background-color: #555;
 }
 
 .home-ul li a.active {
-    color: red;
-}
-
-/* Activity */
-.activity-list-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    margin: 20px auto; /* Center the container horizontally */
-}
-
-.activity-item {
-    border-bottom: 1px solid #ddd;
-    padding: 12px 0;
-    text-align: left;
-    position: relative;
-}
-
-.activity-item:last-child {
-    border-bottom: none;
-}
-
-.delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #f44336;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-/* Add */
-.add-activity-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    margin: 20px auto; 
-    text-align: center;
-}
-
-h2 {
-    color: #333333;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-}
-
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-
-
-/* Calendar */
-.calendar-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    margin: 20px auto; /* Center the container horizontally */
-    text-align: center;
-}
-
-h2 {
-    color: #333333;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table,
-th,
-td {
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-td {
-    background-color: #ffffff;
-    height: 100px;
-    position: relative;
-}
-
-.calendar-number {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 12px;
-    color: #aaa;
-}
-
-
-/* Goals */
-.goals-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-h2 {
-    color: #333333;
-}
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-}
-textarea {
-    height: 150px;
-}
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-.goal-item {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 12px;
-    margin-top: 10px;
-    text-align: left;
-}
-.delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-/* Login */
-.login-container {
-    max-width: 400px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="submit"] {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-input[type="submit"] {
-    color: white;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #555;
-}
-
-
-/* Profile */
-.profile-container {
-    max-width: 600px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-}
-h2 {
-    text-align: center;
-    color: #333333;
-}
-.profile-info {
-    margin-bottom: 20px;
-}
-label {
-    font-weight: bold;
-}
-img {
-    max-width: 100%;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-p {
-    margin-bottom: 10px;
-}
-.delete-profile-btn {
-    background-color: #f44336;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-}
-.delete-profile-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* SignUp */
-.signup-container {
-    max-width: 400px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="url"],
-textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-input[type="submit"] {
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #555;
-}
-
-/* Stats */
-.stats-container {
-    background-color: #f9f9f9;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-h2 {
-    color: #333333;
-}
-
-.stat-item {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #555;
-}
-
-.stat-item span {
-    color: #4CAF50;
-    font-size: 24px;
-}
-
-.stat-item:first-child {
-    margin-top: 0;
-}
-
-.stat-item:last-child {
-    margin-bottom: 0;
-}
-
-/* Distance Tracker */
-#distance, #time {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-#startButton {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    display: block;
-    margin: 0 auto;
-    transition: background-color 0.3s ease;
-}
-#startButton:hover {
-    background-color: #0056b3;
-}
-#log {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
-}
-#logHeader {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-#logList {
-    list-style: none;
-    padding: 0;
-}
-.logEntry {
-    border-bottom: 1px solid #ddd;
-    padding: 12px 0;
-    text-align: left;
-    position: relative;
-}
-.logEntry:last-child {
-    border-bottom: none;
-}
-.delete-button {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.delete-button:hover {
-    background-color: #d32f2f;
+  color: red;
 }
 
 /* Media */
 @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .home-ul {
-        flex-direction: column;
-    }
+  .home-ul {
+    flex-direction: column;
+  }
 
-    .home-ul li {
-        margin: 5px 0;
-    }
+  .home-ul li {
+    margin: 5px 0;
+  }
 }

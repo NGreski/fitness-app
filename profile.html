@@ -1,79 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile</title>
-    <link rel="stylesheet" href="common_style.css">
+    <link rel="stylesheet" href="common_style.css" />
+    <link rel="stylesheet" href="profile.css" />
     <style>
-        /* Additional CSS styles for profile page */
-       
+      /* Additional CSS styles for profile page */
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="nav-bar">
-                GitFitness 🏃
-            </div>
-            <ul class="home-ul">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-                <li><a href="track.html">Start</a></li>
-                <li><a href="add.html" >Add</a></li>
-                <li><a href="activity.html">Activity</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="goals.html">Goals</a></li>
-                <li><a href="profile.html"class="active">Profile</a></li>
-                <li><a href="stats.html">Stats</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="nav-bar">GitFitness 🏃</div>
+        <ul class="home-ul">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">SignUp</a></li>
+          <li><a href="track.html">Start</a></li>
+          <li><a href="add.html">Add</a></li>
+          <li><a href="activity.html">Activity</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="profile.html" class="active">Profile</a></li>
+          <li><a href="stats.html">Stats</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="profile-container">
-        <h2>User Profile</h2>
-        <div class="profile-info">
-            <label for="name">Name:</label>
-            <p id="name"></p>
-        </div>
-        <div class="profile-info">
-            <label for="email">Email:</label>
-            <p id="email"></p>
-        </div>
-        <div class="profile-info">
-            <label for="age">Age:</label>
-            <p id="age"></p>
-        </div>
-        <div class="profile-info">
-            <label for="profile-pic">Profile Picture:</label>
-            <img id="profile-pic" src="" alt="Profile Picture">
-        </div>
-        <div class="profile-info">
-            <label for="bio">Bio:</label>
-            <p id="bio"></p>
-        </div>
+      <h2>User Profile</h2>
+      <div class="profile-info">
+        <label for="name">Name:</label>
+        <p id="name"></p>
+      </div>
+      <div class="profile-info">
+        <label for="email">Email:</label>
+        <p id="email"></p>
+      </div>
+      <div class="profile-info">
+        <label for="age">Age:</label>
+        <p id="age"></p>
+      </div>
+      <div class="profile-info">
+        <label for="profile-pic">Profile Picture:</label>
+        <img id="profile-pic" src="" alt="Profile Picture" />
+      </div>
+      <div class="profile-info">
+        <label for="bio">Bio:</label>
+        <p id="bio"></p>
+      </div>
 
-        <button class="delete-profile-btn" onclick="deleteUserProfile()">Delete Profile</button>
+      <button class="delete-profile-btn" onclick="deleteUserProfile()">
+        Delete Profile
+      </button>
     </div>
 
     <script>
-        function deleteUserProfile() {
-            localStorage.removeItem('userData');
+      function deleteUserProfile() {
+        localStorage.removeItem("userData");
 
-            alert('Your profile has been deleted.');
-            window.location.href = 'home.html'; 
-        }
+        alert("Your profile has been deleted.");
+        window.location.href = "home.html";
+      }
 
-        const userData = JSON.parse(localStorage.getItem('userData'));
+      const userData = JSON.parse(localStorage.getItem("userData"));
 
-        if (userData) {
-            document.getElementById('name').textContent = userData.name || 'N/A';
-            document.getElementById('email').textContent = userData.email || 'N/A';
-            document.getElementById('age').textContent = userData.age || 'N/A';
-            document.getElementById('profile-pic').src = userData.profilePic || 'placeholder.jpg';
-            document.getElementById('bio').textContent = userData.bio || 'No bio available.';
-        }
+      if (userData) {
+        document.getElementById("name").textContent = userData.name || "N/A";
+        document.getElementById("email").textContent = userData.email || "N/A";
+        document.getElementById("age").textContent = userData.age || "N/A";
+        document.getElementById("profile-pic").src =
+          userData.profilePic || "placeholder.jpg";
+        document.getElementById("bio").textContent =
+          userData.bio || "No bio available.";
+      }
     </script>
-</body>
+  </body>
 </html>

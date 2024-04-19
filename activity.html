@@ -1,104 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activity List</title>
-    <link rel="stylesheet" href="common_style.css">
-    <style>
-       
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="common_style.css" />
+    <link rel="stylesheet" href="activity.css" />
+    <style></style>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="nav-bar">
-                GitFitness 🏃
-            </div>
-            <ul class="home-ul">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-                <li><a href="track.html">Start</a></li>
-                <li><a href="add.html" >Add</a></li>
-                <li><a href="activity.html"class="active">Activity</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="goals.html">Goals</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="stats.html">Stats</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <div class="nav-bar">GitFitness 🏃</div>
+        <ul class="home-ul">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">SignUp</a></li>
+          <li><a href="track.html">Start</a></li>
+          <li><a href="add.html">Add</a></li>
+          <li><a href="activity.html" class="active">Activity</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="goals.html">Goals</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="stats.html">Stats</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="activity-list-container">
-        <h2>Activity List</h2>
-        <div id="activityList">
-            <!-- items added here -->
-        </div>
+      <h2>Activity List</h2>
+      <div id="activityList">
+        <!-- items added here -->
+      </div>
 
-        <script>
-            const activities = JSON.parse(localStorage.getItem('activities')) || [];
+      <script>
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
 
-            const activityListContainer = document.getElementById('activityList');
+        const activityListContainer = document.getElementById("activityList");
 
-            function deleteActivity(index) {
-                activities.splice(index, 1); 
-                localStorage.setItem('activities', JSON.stringify(activities)); // Update localStorage
-                renderActivityList(); 
-            }
+        function deleteActivity(index) {
+          activities.splice(index, 1);
+          localStorage.setItem("activities", JSON.stringify(activities)); // Update localStorage
+          renderActivityList();
+        }
 
-            function renderActivityList() {
-                activityListContainer.innerHTML = ''; 
+        function renderActivityList() {
+          activityListContainer.innerHTML = "";
 
-                activities.forEach(function(activity, index) {
-                    const activityItem = document.createElement('div');
-                    activityItem.classList.add('activity-item');
+          activities.forEach(function (activity, index) {
+            const activityItem = document.createElement("div");
+            activityItem.classList.add("activity-item");
 
-                    const activityNameElement = document.createElement('strong');
-                    activityNameElement.textContent = 'Activity Name: ';
-                    activityItem.appendChild(activityNameElement);
-                    activityItem.appendChild(document.createTextNode(activity.name));
-                    activityItem.appendChild(document.createElement('br'));
+            const activityNameElement = document.createElement("strong");
+            activityNameElement.textContent = "Activity Name: ";
+            activityItem.appendChild(activityNameElement);
+            activityItem.appendChild(document.createTextNode(activity.name));
+            activityItem.appendChild(document.createElement("br"));
 
-                    const activityTypeElement = document.createElement('strong');
-                    activityTypeElement.textContent = 'Type: ';
-                    activityItem.appendChild(activityTypeElement);
-                    activityItem.appendChild(document.createTextNode(activity.type));
-                    activityItem.appendChild(document.createElement('br'));
+            const activityTypeElement = document.createElement("strong");
+            activityTypeElement.textContent = "Type: ";
+            activityItem.appendChild(activityTypeElement);
+            activityItem.appendChild(document.createTextNode(activity.type));
+            activityItem.appendChild(document.createElement("br"));
 
-                    const timeElement = document.createElement('strong');
-                    timeElement.textContent = 'Time: ';
-                    activityItem.appendChild(timeElement);
-                    activityItem.appendChild(document.createTextNode(activity.time + ' minutes'));
-                    activityItem.appendChild(document.createElement('br'));
+            const timeElement = document.createElement("strong");
+            timeElement.textContent = "Time: ";
+            activityItem.appendChild(timeElement);
+            activityItem.appendChild(
+              document.createTextNode(activity.time + " minutes")
+            );
+            activityItem.appendChild(document.createElement("br"));
 
-                    const milesElement = document.createElement('strong');
-                    milesElement.textContent = 'Miles: ';
-                    activityItem.appendChild(milesElement);
-                    activityItem.appendChild(document.createTextNode(activity.miles + ' miles'));
-                    activityItem.appendChild(document.createElement('br'));
+            const milesElement = document.createElement("strong");
+            milesElement.textContent = "Miles: ";
+            activityItem.appendChild(milesElement);
+            activityItem.appendChild(
+              document.createTextNode(activity.miles + " miles")
+            );
+            activityItem.appendChild(document.createElement("br"));
 
-                    const dateElement = document.createElement('strong');
-                    dateElement.textContent = 'Date: ';
-                    activityItem.appendChild(dateElement);
-                    activityItem.appendChild(document.createTextNode(activity.date));
-                    activityItem.appendChild(document.createElement('br'));
+            const dateElement = document.createElement("strong");
+            dateElement.textContent = "Date: ";
+            activityItem.appendChild(dateElement);
+            activityItem.appendChild(document.createTextNode(activity.date));
+            activityItem.appendChild(document.createElement("br"));
 
-                    const deleteButton = document.createElement('button');
-                    deleteButton.textContent = 'Delete';
-                    deleteButton.classList.add('delete-button');
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add("delete-button");
 
-                    deleteButton.addEventListener('click', function() {
-                        deleteActivity(index);
-                    });
-                    activityItem.appendChild(deleteButton);
+            deleteButton.addEventListener("click", function () {
+              deleteActivity(index);
+            });
+            activityItem.appendChild(deleteButton);
 
-                    activityListContainer.appendChild(activityItem);
-                });
-            }
+            activityListContainer.appendChild(activityItem);
+          });
+        }
 
-            renderActivityList();
-        </script>
+        renderActivityList();
+      </script>
     </div>
-</body>
+  </body>
 </html>

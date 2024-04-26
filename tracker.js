@@ -1,8 +1,8 @@
-let distanceTraveled = 0; // in miles
+let distanceTraveled = 0; 
 let startTime = null;
 let lastPosition = null;
-let timerInterval = null; // Interval ID for updating the timer
-let sessionLog = []; // Array to store session history
+let timerInterval = null; 
+let sessionLog = []; 
 
 const distanceElement = document.getElementById('distance');
 const timeElement = document.getElementById('time');
@@ -20,16 +20,16 @@ startButton.addEventListener('click', () => {
 function startTracking() {
     startButton.textContent = 'Stop';
     startTime = new Date();
-    timerInterval = setInterval(updateTimerAndDistance, 1000); // Start updating timer and distance every second
+    timerInterval = setInterval(updateTimerAndDistance, 1000); 
     navigator.geolocation.watchPosition(handlePositionUpdate, handlePositionError, {
-        enableHighAccuracy: true // Use high accuracy for position tracking
+        enableHighAccuracy: true 
     });
 }
 
 function stopTracking() {
     startButton.textContent = 'Go';
-    clearInterval(timerInterval); // Stop updating the timer and distance
-    logSession(); // Log the current session
+    clearInterval(timerInterval); 
+    logSession(); 
     distanceTraveled = 0;
     startTime = null;
     updateDistanceUI();
@@ -39,7 +39,7 @@ function stopTracking() {
 }
 
 function handlePositionUpdate(position) {
-    if (!startTime) return; // Tracking not started
+    if (!startTime) return; 
 
     const { latitude, longitude } = position.coords;
     const currentPosition = { latitude, longitude };
@@ -77,7 +77,7 @@ function updateTimeUI(elapsedTimeSeconds) {
 }
 
 function calculateDistance(pos1, pos2) {
-    const earthRadiusMiles = 3958.8; // in miles (approximate radius of Earth)
+    const earthRadiusMiles = 3958.8; 
     const { latitude: lat1, longitude: lon1 } = pos1;
     const { latitude: lat2, longitude: lon2 } = pos2;
 
@@ -107,26 +107,21 @@ function logSession() {
         const currentTime = new Date();
         const elapsedTimeSeconds = Math.round((currentTime - startTime) / 1000);
 
-        // Create a new session log entry
         const sessionEntry = {
             startTime: startTime.toLocaleString(),
             duration: `${elapsedTimeSeconds} seconds`,
             distance: `${distanceTraveled.toFixed(2)} miles`
         };
-
-        // Add session entry to the log
+        
         sessionLog.push(sessionEntry);
 
-        // Display the session log
         displaySessionLog();
     }
 }
 
 function displaySessionLog() {
-    // Clear existing log display
     logList.innerHTML = '';
 
-    // Iterate through sessionLog and display each entry
     sessionLog.forEach((session, index) => {
         const sessionItem = document.createElement('li');
         sessionItem.classList.add('logEntry');

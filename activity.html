@@ -30,7 +30,7 @@
     <div class="activity-list-container">
       <h2>Activity List</h2>
       <div id="activityList">
-        <!-- items added here -->
+
       </div>
 
       <script>
@@ -40,7 +40,7 @@
 
         function deleteActivity(index) {
           activities.splice(index, 1);
-          localStorage.setItem("activities", JSON.stringify(activities)); // Update localStorage
+          localStorage.setItem("activities", JSON.stringify(activities)); 
           renderActivityList();
         }
 

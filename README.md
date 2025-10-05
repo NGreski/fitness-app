@@ -1,9 +1,63 @@
-# fitness-app
+# 🏋️‍♂️ GitFitness
 
-# GitFitness - 
+**GitFitness** is a web application that allows users to track their fitness goals and activities in a simple, interactive way.  
 
-GitFitness is a Web Application that allows users to track their fitness goals. There are several features that allow this to happen. Users can manually upload an activity that they did like running, biking or walking. Several metrics are included within the add activity page like time, distance, calories burned, date and difficulty level. These activities are then stored in a database and sent to other pages on our website. User's activities will be displayed on the calendar and on the activity page and the stats will go on the stats page.
+---
 
-Users can also sign up and create a profile with a picture and other information about themselves. There is also a goals page where users can write down their fitness goals. Most of these pages use local storage to display user's inputs, other than the activities using a database to store the information.
+## ✨ Features
 
-GitFitness' most impressive feauture is our distance tracker. You can go to the start page (track.html) and hit go to track distance and time, for a run or walk or anything you'd like to use it for. This distance tracker uses a JavaScript function called geolocation, to track the location of the user within the browser of their mobile device.
+### 🔹 Activity Tracking
+- Users can **manually upload activities** such as running, biking, or walking.  
+- Each activity includes metrics like:  
+  - Time  
+  - Distance  
+  - Calories burned  
+  - Date  
+  - Difficulty level  
+- Activities are stored in a **database** and displayed across different parts of the app:  
+  - **Calendar page** – view activities by date  
+  - **Activity page** – list of all recorded activities  
+  - **Stats page** – statistics and summaries of activity data  
+
+---
+
+### 🔹 User Profiles
+- Sign up and create a personalized profile  
+- Upload a profile picture  
+- Add personal fitness information and goals  
+
+---
+
+### 🔹 Goals Page
+- Write down and track your **fitness goals**  
+- Most goals and profile data use **local storage** for persistence  
+- Activity data is stored in the **database** for more reliable tracking  
+
+---
+
+### 🔹 Distance Tracker
+The highlight of GitFitness is the **real-time distance tracker**:  
+- Accessible via the **Track page** (`track.html`)  
+- Start and stop tracking with one click  
+- Records both **distance** and **time** for runs, walks, or other activities  
+- Built using the browser’s **JavaScript Geolocation API**, optimized for mobile devices  
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** HTML, CSS, JavaScript  
+- **Storage:**  
+  - Local Storage (for profile & goals)  
+  - Database (for activities)  
+- **APIs:** JavaScript Geolocation API  
+
+---
+
+## 📌 Summary
+GitFitness provides a streamlined way for users to:  
+✔ Track workouts and activities  
+✔ Monitor statistics over time  
+✔ Define and record personal fitness goals  
+✔ Use GPS-based distance tracking directly from their phone’s browser  
+
+Whether you’re running, biking, or just walking, GitFitness helps you stay accountable and motivated toward your goals.  
